@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0gw9o89" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.17.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.3.0">
+  <inputData id="price" name="Price" />
+  <decision id="discountDecision" name="Decide discount">
+    <informationRequirement id="InformationRequirement_0np7cvo">
+      <requiredInput href="#price" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1pfahos" hitPolicy="FIRST">
+      <input id="InputClause_1tbrccq" label="Price">
+        <inputExpression id="LiteralExpression_0flyon7" typeRef="number">
+          <text>price</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1ju92qz" label="Discount %" name="discount" typeRef="number" />
+      <rule id="DecisionRule_18xqchm">
+        <description>10 % discount for spendings over 20 EUR</description>
+        <inputEntry id="UnaryTests_0cp8z91">
+          <text>&gt; 20</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r3xxne">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15a8pea">
+        <description>5 % discount for spendings over 10 EUR</description>
+        <inputEntry id="UnaryTests_0l1a4au">
+          <text>&gt; 10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cxfm4t">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0enw8dl">
+        <description>no discount</description>
+        <inputEntry id="UnaryTests_1d9j37j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ur90fb">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_18znbc4" dmnElementRef="price">
+        <dc:Bounds height="45" width="125" x="197" y="228" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1p614up" dmnElementRef="discountDecision">
+        <dc:Bounds height="80" width="180" x="170" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1mue2fv" dmnElementRef="InformationRequirement_0np7cvo">
+        <di:waypoint x="260" y="228" />
+        <di:waypoint x="260" y="180" />
+        <di:waypoint x="260" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

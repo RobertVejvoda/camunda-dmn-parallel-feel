@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0fmgvv7" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.17.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.3.0">
+  <decision id="orderItemsDecision" name="Order items">
+    <informationRequirement id="InformationRequirement_0vhd8v4">
+      <requiredInput href="#item" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0cusuv8">
+      <requiredInput href="#quan" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1dkgk31">
+      <requiredInput href="#quantity" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_1wit7jb">
+      <requiredAuthority href="#KnowledgeSource_0b566o5" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_0z1zsk1">
+      <input id="InputClause_08tqap0" label="item" biodi:width="271">
+        <inputExpression id="LiteralExpression_15toa8r" typeRef="string">
+          <text>item</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_06ep6ck" label="Quantity">
+        <inputExpression id="LiteralExpression_0sdv746" typeRef="number">
+          <text>quantity</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_12qzmnv" label="price" name="price" typeRef="number" />
+      <rule id="DecisionRule_0n5l79f">
+        <description>Fresh orange juice: 4.50 EUR</description>
+        <inputEntry id="UnaryTests_1y91m59">
+          <text>"Juice"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ohg1ks">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pzxwez">
+          <text>4.5 * quantity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r5lfyt">
+        <description>Fresh coffee: 3 EUR</description>
+        <inputEntry id="UnaryTests_19lx3t5">
+          <text>"Coffee"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_077t9j6">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06f42bm">
+          <text>3 * quantity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pyc3bm">
+        <description>Toast with jam: 2 EUR</description>
+        <inputEntry id="UnaryTests_0fxr4uq">
+          <text>"Toast"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_175qcso">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i45tgs">
+          <text>2 * quantity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06tqdmo">
+        <description>Fried bacon: 4.10 EUR</description>
+        <inputEntry id="UnaryTests_1fmgd4w">
+          <text>"Bacon"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19y7sc5">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12tt6us">
+          <text>4.1 * quantity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19znunz">
+        <description>Fried eggs: 3.5 EUR</description>
+        <inputEntry id="UnaryTests_0h67q9i">
+          <text>"Eggs"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rbcopn">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_095wh5f">
+          <text>3.5 * quantity</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="item" name="item" />
+  <inputData id="quantity" name="quantity" />
+  <knowledgeSource id="KnowledgeSource_0b566o5" name="menu" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_086rlf5" dmnElementRef="orderItemsDecision">
+        <dc:Bounds height="80" width="180" x="400" y="90" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1xb4eaw" dmnElementRef="item">
+        <dc:Bounds height="45" width="125" x="327" y="227" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1hvwjyp" dmnElementRef="InformationRequirement_0vhd8v4">
+        <di:waypoint x="390" y="227" />
+        <di:waypoint x="460" y="190" />
+        <di:waypoint x="460" y="170" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0ttjciz" dmnElementRef="quantity">
+        <dc:Bounds height="45" width="125" x="517" y="227" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0o3184b" dmnElementRef="InformationRequirement_0cusuv8">
+        <di:waypoint x="410" y="217" />
+        <di:waypoint x="340" y="180" />
+        <di:waypoint x="340" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0uqgut1" dmnElementRef="InformationRequirement_1dkgk31">
+        <di:waypoint x="580" y="227" />
+        <di:waypoint x="520" y="190" />
+        <di:waypoint x="520" y="170" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0qc1j8w" dmnElementRef="KnowledgeSource_0b566o5">
+        <dc:Bounds height="63" width="100" x="160" y="98" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_17x36oq" dmnElementRef="AuthorityRequirement_1wit7jb">
+        <di:waypoint x="260" y="130" />
+        <di:waypoint x="400" y="130" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
