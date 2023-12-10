@@ -32,3 +32,4 @@ according to total spending.
 
 ![operate.png](operate.png)
 
+Note: I figured out that I tend to use DMN tables small enough to possibly reuse them across various processes.
